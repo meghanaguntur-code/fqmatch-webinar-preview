@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Illinois' Alternate Physician Pathways · Free Webinar · FQ Match × IPHCA</title>
+<meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Free educational webinar for healthcare and FQHC leaders. Thursday, November 19, 2026 · 11:00 AM CST. Presented by FQ Match in partnership with the Illinois Primary Health Care Association.">
 <meta property="og:title" content="Illinois' Alternate Physician Pathways: Lessons and Opportunities for Healthcare Employers">
 <meta property="og:description" content="Complimentary webinar · Thu, Nov 19, 2026 · 11:00 AM CST · FQ Match × IPHCA">
@@ -66,6 +66,28 @@ body.registered .topbar .btn{visibility:hidden}
 .countdown div{background:var(--navy);color:#fff;border-radius:10px;min-width:68px;padding:10px 8px;text-align:center}
 .countdown b{display:block;font-size:24px;line-height:1}
 .countdown span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+/* scroll-down nudges */
+.explore{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:11px 18px;border-radius:999px;background:#fff;border:1.5px solid var(--blue);color:var(--blue);font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 6px 18px rgba(11,92,173,.12);transition:background .2s,color .2s}
+.explore:hover{background:var(--blue);color:#fff}
+.explore i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--grad);color:#fff;font-style:normal;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.scroll-cue{position:fixed;left:50%;bottom:22px;z-index:24;transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:var(--navy);color:#fff;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 10px 28px rgba(15,33,71,.3);animation:cuein .6s ease .8s both;transition:opacity .4s,transform .4s}
+.scroll-cue svg{animation:nudge 1.6s ease-in-out infinite}
+.scroll-cue.gone{opacity:0;transform:translate(-50%,16px);pointer-events:none}
+@keyframes cuein{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translate(-50%,0)}}
+@media (max-width:560px){.scroll-cue{display:none}.explore{width:100%;justify-content:center}}
+#speakers,#attend,#connect{scroll-margin-top:80px}
+/* "after you register" jump card */
+.nextup{padding:18px 20px}
+.nextup .k{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.nextup h3{margin:4px 0 12px;font-size:18px;color:var(--navy)}
+.nextup a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;text-decoration:none;color:var(--navy);border:1px solid var(--line);background:#fff;transition:border-color .2s,transform .2s,box-shadow .2s}
+.nextup a+a{margin-top:8px}
+.nextup a:hover{border-color:var(--blue);transform:translateY(-1px);box-shadow:0 6px 16px rgba(11,92,173,.12)}
+.nextup .ic{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#eef4fb;font-size:17px}
+.nextup b{display:block;font-size:15px}
+.nextup small{display:block;color:var(--muted);font-size:13px}
+.nextup .go{margin-left:auto;color:var(--blue);font-weight:800;animation:nudge 1.6s ease-in-out infinite}
 
 /* register card (IPHCA) */
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
@@ -336,6 +358,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div><b id="cd-m">--</b><span>Min</span></div>
         <div><b id="cd-s">--</b><span>Sec</span></div>
       </div>
+      <a class="explore" href="#speakers">Meet the speakers &amp; who should attend <i aria-hidden="true">↓</i></a>
     </div>
 
     <div class="hero-side">
@@ -360,11 +383,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <a class="btn btn-primary iphca-go" target="_blank" rel="noopener">Register on IPHCA →</a>
       <p class="have">Open to employers and physicians. IPHCA will email your confirmation.</p>
     </div>
+    <!-- AFTER REGISTERING: nudge visitors further down the page -->
+    <div class="card nextup">
+      <span class="k">Registered? Keep going</span>
+      <h3>Get ready for November 19</h3>
+      <a href="#speakers"><span class="ic" aria-hidden="true">🎤</span><span><b>Meet your panel</b><small>The experts you'll hear from</small></span><span class="go" aria-hidden="true">↓</span></a>
+      <a href="#attend"><span class="ic" aria-hidden="true">🏥</span><span><b>Is this webinar for you?</b><small>Employers, FQHCs and physicians</small></span><span class="go" aria-hidden="true">↓</span></a>
+      <a href="#connect"><span class="ic" aria-hidden="true">🤝</span><span><b>Get a head start with FQ Match</b><small>Check eligibility or start hiring</small></span><span class="go" aria-hidden="true">↓</span></a>
+    </div>
     </div>
   </div>
 </header>
 
-<section class="alt">
+<section class="alt" id="speakers">
   <div class="wrap">
     <div class="sh">
       <span class="eyebrow">Featured speakers</span>
@@ -484,7 +515,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
-<section>
+<section id="attend">
   <div class="wrap">
     <div class="sh">
       <span class="eyebrow">Who should attend</span>
@@ -566,6 +597,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </footer>
 
+<a class="scroll-cue" id="scroll-cue" href="#speakers" aria-label="Scroll down to explore the webinar">Scroll to explore <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
 <div class="mcta"><a class="btn btn-primary iphca-go" target="_blank" rel="noopener">Register via IPHCA · Nov 19, 11 AM CST</a></div>
 
 
@@ -575,7 +607,7 @@ const CONFIG = {
   // "Let's connect" form → FQ Match Connect Sheet (fq-connect-apps-script.gs). ?demo=1 skips sending.
   SHEET_ENDPOINT: "https://script.google.com/macros/s/AKfycbyLX_PRuTUNEdA6lo5rOklgzN6Slr8X3sbjyAZQw1dxNJzL7ZzQXXNeoghXXcvwaG_yag/exec",
   IPHCA_ACCOUNT_URL: "https://member.iphca.org/Member/Web/Events/Event_Display.aspx?EventKey=IAPP111926", // IPHCA event page: log in / create account + register
-  PAGE_URL: "https://fqmatch.com/webinar",             // public URL of this page, used for sharing
+  PAGE_URL: "https://meghanaguntur-code.github.io/fqmatch-iphca-webinar/",             // public URL of this page, used for sharing
   WA_NUMBER: "15554008190",                            // FQ Match WhatsApp number, digits only with country code
   SOCIALS: {                                           // PLACEHOLDERS: replace with the real FQ Match profile URLs (leave "" to hide an icon)
     linkedin:  "https://www.linkedin.com/company/fqmatch",
@@ -613,6 +645,11 @@ tick(); const cdTimer = setInterval(() => {
   } else tick();
 },1000);
 if (Date.now() >= START) $("countdown").innerHTML = Date.now() < END ? '<div class="live">Live now</div>' : '<div class="live" style="background:var(--muted)">This webinar has concluded</div>';
+
+/* floating "Scroll to explore" pill: hide once the visitor starts scrolling */
+(() => { const cue = $("scroll-cue"); if (!cue) return;
+  const upd = () => cue.classList.toggle("gone", window.scrollY > 120);
+  upd(); window.addEventListener("scroll", upd, {passive:true}); })();
 
 /* every "Register on IPHCA" button */
 document.querySelectorAll(".iphca-go").forEach(a => {
