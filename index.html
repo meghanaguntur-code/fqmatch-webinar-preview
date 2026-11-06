@@ -82,26 +82,20 @@ body.registered .topbar .btn{visibility:hidden}
 .countdown b{display:block;font-size:24px;line-height:1}
 .countdown span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
 #speakers,#attend,#connect{scroll-margin-top:80px}
-/* "after you register" card: speaker faces + simple links */
-.nextup{padding:18px 20px}
-.nextup .k{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
-.panel-peek{display:flex;align-items:center;gap:14px;margin-top:10px;padding:12px;border-radius:14px;background:#eef4fb;text-decoration:none;color:var(--navy);transition:box-shadow .2s,transform .2s}
-.panel-peek:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(11,92,173,.15)}
-.faces{display:flex;flex:none}
-.faces img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 2px 6px rgba(15,33,71,.15)}
-.faces img+img{margin-left:-14px}
-.panel-peek b{display:block;font-size:16px}
-.panel-peek small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
-.panel-peek .cta{display:inline-block;margin-top:6px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+/* FQ Match teaser in the hero */
+.fq-teaser{display:block;margin-top:28px;max-width:560px;padding:20px 22px;border-radius:16px;text-decoration:none;color:var(--navy);background:linear-gradient(135deg,#eaf6f7,#fff 70%);border:1.5px solid #cfe9ec;box-shadow:0 10px 26px rgba(20,163,163,.12);transition:transform .2s,box-shadow .2s,border-color .2s}
+.fq-teaser:hover{transform:translateY(-2px);border-color:var(--teal);box-shadow:0 14px 32px rgba(20,163,163,.2)}
+.fq-teaser .t-k{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.fq-teaser .t-h{display:block;margin-top:6px;font-size:20px;font-weight:800}
+.fq-teaser .t-p{display:block;margin-top:6px;color:var(--muted);font-size:15px;line-height:1.5}
+.fq-teaser .t-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fq-teaser .t-tags span{background:#fff;border:1px solid #d6ecee;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600}
+.fq-teaser .t-cta{display:inline-block;margin-top:14px;padding:10px 18px;border-radius:10px;background:var(--grad);color:#fff;font-weight:700;font-size:15px}
 .btn-teal{background:var(--grad);color:#fff;box-shadow:0 6px 18px rgba(20,163,163,.3)}
 .nextbtn{width:100%;margin-top:12px;font-size:16px;padding:13px}
 .nextsub{display:block;text-align:center;margin-top:10px;font-size:13px;font-weight:600;color:var(--blue);text-underline-offset:3px}
 .welcome{display:none;align-items:center;gap:10px;margin:0 0 22px;padding:12px 16px;border-radius:12px;background:#e8f7f3;border:1px solid #bfe8dc;color:#0d5e4a;font-weight:600}
 body.went-iphca .welcome{display:flex}
-.nextlinks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-.nextlinks a{display:block;padding:10px 12px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--navy);font-weight:700;font-size:14px;background:#fff;transition:border-color .2s}
-.nextlinks a small{display:block;font-weight:500;color:var(--muted);font-size:12px}
-.nextlinks a:hover{border-color:var(--blue)}
 
 /* register card (IPHCA) */
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
@@ -379,6 +373,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div><b id="cd-m">--</b><span>Min</span></div>
         <div><b id="cd-s">--</b><span>Sec</span></div>
       </div>
+      <a class="fq-teaser" href="#connect">
+        <span class="t-k">Beyond the webinar · About FQ Match</span>
+        <span class="t-h">Solving the physician workforce shortage</span>
+        <span class="t-p">FQ Match helps healthcare employers, including FQHCs, and internationally trained physicians navigate Illinois' new pathways, from eligibility to placement.</span>
+        <span class="t-tags"><span>Eligibility</span><span>Credentialing</span><span>Matching</span><span>Placement</span></span>
+        <span class="t-cta">Learn how FQ Match can help</span>
+      </a>
     </div>
 
     <div class="hero-side">
@@ -402,16 +403,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </ol>
       <a class="btn btn-primary iphca-go" target="_blank" rel="noopener">Register on IPHCA →</a>
       <p class="have">Open to employers and physicians. IPHCA will email your confirmation.</p>
-    </div>
-    <!-- AFTER REGISTERING: nudge visitors further down the page -->
-    <div class="card nextup">
-      <span class="k">Registered? Here's what's next</span>
-      <a class="panel-peek" href="#speakers">
-        <span class="faces" id="faces" aria-hidden="true"></span>
-        <span><b>Meet your moderator and panel</b><small>Healthcare leaders from FQ Match, IPHCA and TCA Health</small></span>
-      </a>
-      <a class="btn btn-teal nextbtn" href="#speakers">Meet the panel &amp; FQ Match</a>
-      <a class="nextsub" href="#attend">Not sure it's for you? See who should attend</a>
     </div>
     </div>
   </div>
@@ -667,9 +658,6 @@ tick(); const cdTimer = setInterval(() => {
   } else tick();
 },1000);
 if (Date.now() >= START) $("countdown").innerHTML = Date.now() < END ? '<div class="live">Live now</div>' : '<div class="live" style="background:var(--muted)">This webinar has concluded</div>';
-
-/* speaker faces in the "what's next" card (reuses the photos in the speakers section) */
-document.querySelectorAll("#speakers img.ph").forEach(img => { const c = img.cloneNode(); c.removeAttribute("class"); c.alt = ""; $("faces").appendChild(c); });
 
 /* section menu: highlight the section currently on screen */
 (() => { const links = [...document.querySelectorAll(".secnav a")];
