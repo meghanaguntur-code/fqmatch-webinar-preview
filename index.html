@@ -78,6 +78,11 @@ body.registered .topbar .btn{visibility:hidden}
 .panel-peek b{display:block;font-size:16px}
 .panel-peek small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 .panel-peek .cta{display:inline-block;margin-top:6px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.btn-teal{background:var(--grad);color:#fff;box-shadow:0 6px 18px rgba(20,163,163,.3)}
+.nextbtn{width:100%;margin-top:12px;font-size:16px;padding:13px}
+.nextsub{display:block;text-align:center;margin-top:10px;font-size:13px;font-weight:600;color:var(--blue);text-underline-offset:3px}
+.welcome{display:none;align-items:center;gap:10px;margin:0 0 22px;padding:12px 16px;border-radius:12px;background:#e8f7f3;border:1px solid #bfe8dc;color:#0d5e4a;font-weight:600}
+body.went-iphca .welcome{display:flex}
 .nextlinks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .nextlinks a{display:block;padding:10px 12px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--navy);font-weight:700;font-size:14px;background:#fff;transition:border-color .2s}
 .nextlinks a small{display:block;font-weight:500;color:var(--muted);font-size:12px}
@@ -381,12 +386,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <span class="k">Registered? Here's what's next</span>
       <a class="panel-peek" href="#speakers">
         <span class="faces" id="faces" aria-hidden="true"></span>
-        <span><b>Meet your moderator and panel</b><small>Healthcare leaders from FQ Match, IPHCA and TCA Health</small><span class="cta">See the speakers</span></span>
+        <span><b>Meet your moderator and panel</b><small>Healthcare leaders from FQ Match, IPHCA and TCA Health</small></span>
       </a>
-      <div class="nextlinks">
-        <a href="#attend">Who should attend<small>Employers, FQHCs, physicians</small></a>
-        <a href="#connect">Work with FQ Match<small>Eligibility and hiring</small></a>
-      </div>
+      <a class="btn btn-teal nextbtn" href="#speakers">Meet the panel &amp; FQ Match</a>
+      <a class="nextsub" href="#attend">Not sure it's for you? See who should attend</a>
     </div>
     </div>
   </div>
@@ -394,6 +397,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section class="alt" id="speakers">
   <div class="wrap">
+    <p class="welcome" role="status">Thanks for registering on IPHCA! Here's who you'll hear from on November 19, and how FQ Match can help after the webinar.</p>
     <div class="sh">
       <span class="eyebrow">Featured speakers</span>
       <h2>Your moderator and panel</h2>
@@ -648,7 +652,11 @@ document.querySelectorAll("#speakers img.ph").forEach(img => { const c = img.clo
 /* every "Register on IPHCA" button */
 document.querySelectorAll(".iphca-go").forEach(a => {
   a.href = CONFIG.IPHCA_ACCOUNT_URL;
-  a.addEventListener("click", () => { if (window.dataLayer) dataLayer.push({event:"iphca_register_click"}); });
+  a.addEventListener("click", () => {
+    if (window.dataLayer) dataLayer.push({event:"iphca_register_click"});
+    // IPHCA opens in a new tab; when the visitor comes back, they land on the panel + FQ Match
+    setTimeout(() => { document.body.classList.add("went-iphca"); $("speakers").scrollIntoView({behavior:"smooth"}); }, 700);
+  });
 });
 
 /* share links */
